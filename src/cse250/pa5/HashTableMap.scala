@@ -9,11 +9,11 @@
  * http://creativecommons.org/licenses/by-nc-sa/4.0/.
  *
  * Submission author
- * UBIT:
- * Person#:
+ * UBIT: edgarust
+ * Person#: 50230866
  *
  * Collaborators (include UBIT name of each, comma separated):
- * UBIT:
+ * UBIT: edgarust
  */
 package cse250.pa5
 
@@ -26,7 +26,7 @@ class HashTableMap[K, V]()(implicit hash: Hashing[K]) extends cse250.objects.Map
   var alpha: Double = 0.0
   val alphaMax: Double = 0.6
 
-  var bucketArray = Array.fill[ListBuffer[(K,V)]](N)(ListBuffer[(K,V)]())
+  var bucketArray: Array[ListBuffer[(K, V)]] = Array.fill[ListBuffer[(K,V)]](N)(ListBuffer[(K,V)]())
 
   def rehash(newSize: Int): Unit = {
     if (newSize > N) {
@@ -39,7 +39,9 @@ class HashTableMap[K, V]()(implicit hash: Hashing[K]) extends cse250.objects.Map
     }
   }
 
-  override def addOne(elem: (K, V)): Unit = ???
+  override def addOne(elem: (K, V)): Unit = {
+
+  }
 
   override def get(key: K): Option[V] = {
     val lookupIndex = hash.hash(key) % N
@@ -49,5 +51,13 @@ class HashTableMap[K, V]()(implicit hash: Hashing[K]) extends cse250.objects.Map
     None
   }
 
-  override def iterator: Iterator[(K, V)] = ???
+  override def iterator: Iterator[(K, V)] = new Iterator[(K, V)] {
+    override def hasNext: Boolean = {
+      false
+    }
+
+    override def next(): (K, V) = {
+
+    }
+  }
 }
