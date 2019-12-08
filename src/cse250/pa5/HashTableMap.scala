@@ -40,12 +40,14 @@ class HashTableMap[K, V]()(implicit hash: Hashing[K]) extends cse250.objects.Map
   }
 
   override def addOne(elem: (K, V)): Unit = {
+    //Create the placement indX using the hash method
+    val insertIndX = hash.hash(elem._1) % N
 
   }
 
   override def get(key: K): Option[V] = {
-    val lookupIndex = hash.hash(key) % N
-    for (elem <- bucketArray(lookupIndex)) {
+    val lookupIndX = hash.hash(key) % N
+    for (elem <- bucketArray(lookupIndX)) {
       if (elem._1 == key) return Some(elem._2)
     }
     None
